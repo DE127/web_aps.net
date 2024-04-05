@@ -1,0 +1,107 @@
+CATEGORY 
+Tên c?t ki?u DL ?? dài Ràng bu?c 
+Id Int 11 Khóa chính t? ??ng t?ng 
+Name Nvarchar 100 Không r?ng, không trùng 
+Status Tinyint  M?c ??nh 1 
+CreatedDate Date  M?c ??nh ngày hi?n t?i 
+Image Varchar 100 r?ng 
+Description Nvarchar 350 r?ng 
+ 
+PRODUCT 
+Tên c?t ki?u DL ?? dài Ràng bu?c 
+Id Int 11 Khóa chính t? ??ng t?ng 
+Name Nvarchar 100 Không r?ng, không trùng 
+Price Float  Không r?ng 
+salePrice Float  M?c ??nh 0 
+Status Tinyint  M?c ??nh 1 
+CategoryId Int 11 Không r?ng, khóa ngo?i Category 
+CreatedDate Date  M?c ??nh ngày hi?n t?i 
+Image Varchar 100 r?ng 
+Description Nvarchar 350 r?ng 
+ 
+BANNER 
+Tên c?t ki?u DL ?? dài Ràng bu?c 
+Id Int 11 Khóa chính t? ??ng t?ng 
+Name Nvarchar 100 Không r?ng, không trùng 
+Status Tinyint  M?c ??nh 1 
+Int  
+M?c ??nh 0 
+Prioty 
+Image 
+Varchar 
+100 
+r?ng 
+Description 
+Nvarchar 
+350 
+r?ng 
+BLOG 
+Tên c?t 
+ki?u DL 
+?? dài 
+Ràng bu?c 
+Id 
+Int 
+11 
+Khóa chính t? ??ng t?ng 
+Name 
+Nvarchar 
+100 
+Không r?ng, không trùng 
+Status 
+Tinyint  
+M?c ??nh 1 
+CreatedDate 
+Date  
+M?c ??nh ngày hi?n t?i 
+Image 
+Varchar 
+100 
+r?ng 
+Description 
+Nvarchar 
+350 
+r?ng 
+
+
+
+// Vi?t câu l?nh t?o b?ng trong sql server
+CREATE TABLE Category(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Name NVARCHAR(100) NOT NULL,
+	Status TINYINT DEFAULT 1,
+	CreatedDate DATE DEFAULT GETDATE(),
+	Image VARCHAR(100) DEFAULT '',
+	Description NVARCHAR(350) DEFAULT ''
+)
+
+CREATE TABLE Product(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Name NVARCHAR(100) NOT NULL,
+	Price FLOAT NOT NULL,
+	SalePrice FLOAT DEFAULT 0,
+	Status TINYINT DEFAULT 1,
+	CategoryId INT NOT NULL,
+	CreatedDate DATE DEFAULT GETDATE(),
+	Image VARCHAR(100) DEFAULT '',
+	Description NVARCHAR(350) DEFAULT '',
+	FOREIGN KEY(CategoryId) REFERENCES Category(Id)
+)
+
+CREATE TABLE Banner(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Name NVARCHAR(100) NOT NULL,
+	Status TINYINT DEFAULT 1,
+	Prioty INT DEFAULT 0,
+	Image VARCHAR(100) DEFAULT '',
+	Description NVARCHAR(350) DEFAULT ''
+)
+
+CREATE TABLE Blog(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	Name NVARCHAR(100) NOT NULL,
+	Status TINYINT DEFAULT 1,
+	CreatedDate DATE DEFAULT GETDATE(),
+	Image VARCHAR(100) DEFAULT '',
+	Description NVARCHAR(350) DEFAULT ''
+)

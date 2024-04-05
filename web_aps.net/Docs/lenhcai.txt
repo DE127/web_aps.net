@@ -1,0 +1,16 @@
+﻿Scaffold-DbContext "Server=localhost;Database=BDKSo3;uid=sa;pwd=1;MultipleActiveResultSets=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+// Kết nối với SQL Server bằng Windows Authentication
+
+Scaffold-DbContext "Server=localhost;Database=BDKSo3;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+// Migration
+
+Add-Migration InitialCreate
+
+Update-Database
+
+
+// Add SQL Server BDKSo3Context
+builder.Services.AddDbContext<BDKSo3Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BDKSo3Context")));
